@@ -284,6 +284,24 @@ go_test(
     deps = [":no_go_package_go_proto"],
 )
 
+# proto_package_test_no_import_path
+proto_library(
+    name = "go_package_without_full_import_path_proto",
+    srcs = ["go_package_without_full_import_path.proto"],
+)
+
+go_proto_library(
+    name = "go_package_without_full_import_path_go_proto",
+    importpath = "github.com/bazelbuild/rules_go/foo",
+    protos = [":go_package_without_full_import_path_proto"],
+)
+
+go_test(
+    name = "go_package_without_full_import_path_test",
+    srcs = ["go_package_without_full_import_path.go"],
+    deps = [":go_package_without_full_import_path_go_proto"],
+)
+
 go_test(
     name = "wkt_wrapper_test",
     srcs = ["wkt_wrapper_test.go"],

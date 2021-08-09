@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package protopkg;
+
+option go_package = "foo";
+
+message Foo {
+  int64 x = 1;
+}
